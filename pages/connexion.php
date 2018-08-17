@@ -8,8 +8,9 @@ if(isset($_GET["connexion"])){
         var_dump($_SESSION['client']);
     }
     else{
-        $_SESSION['client']=$client[0]->idcli;
-        var_dump( $_SESSION['client']);
+        $_SESSION['client']=$client[0]->idcli;?>
+        <meta http-equiv = "refresh": content = "0;url=index.php?page=accueil">
+        <?php
     }
     
 }

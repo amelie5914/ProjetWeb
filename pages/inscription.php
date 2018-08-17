@@ -10,31 +10,42 @@ if(isset($_GET['envoyer'])){
 <section>
     <h1 class="centrer">Inscrivez-vous!</h1>
 <table class="formulaire">
-    <form action="index.php?page=inscription.php" method="GET">
-	<tr>
-		<td><label for="id_nom">Nom :</label></td>
-            <td><input type="text" id="id_nom" name="nom" aria-describedby="inputGroupPrepend3" required/></td>
-	</tr>
-	<tr>
-            <td><label for="id_prenom">Prénom :</label></td>
-            <td><input type="text" id="id_prenom" name="prenom" aria-describedby="inputGroupPrepend3" required/></td>
-	</tr>
-        <tr>
-            <td><label for="id_mdp">Mot de passe :</label></td>
-            <td><input type="password" id="id_mdp" name="mdp" aria-describedby="inputGroupPrepend3" required/></td>
-	</tr>
-	<tr>
-            <td><label for="id_adresse">Adresse :</label></td>
-            <td><input type="text" id="id_adresse" name="adresse" aria-describedby="inputGroupPrepend3" required/></td>
-	</tr>
-	<tr>
-		<td><label for="id_email">Votre e-mail :</label></td>
-		<td> <input type="email" id="id_email" name="email" aria-describedby="inputGroupPrepend3" required/></td>
-	</tr>
-         <tr>
-            <td><input type="submit" class="boutonReservation" name="envoyer" id="id_submit" value="Envoyer"/></td>
-            <td><input type="reset" class="boutonReservation" id="id_reset" value="Annuler"/></td>
-	</tr>
-    </form>
+    <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="GET">
+        <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Nom</label>
+      <input type="text" class="form-control " name="nom" id="nom" placeholder="Nom" aria-describedby="inputGroupPrepend3" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Prenom</label>
+      <input type="text" class="form-control " name="prenom" id="prenom" placeholder="Prenom" aria-describedby="inputGroupPrepend3" required>
+    </div>
+  </div>
+        <div class="form-group">
+    <label for="inputAddress">Email</label>
+    <input type="email" class="form-control " name="email" id="email" placeholder="Email" aria-describedby="inputGroupPrepend3" required>
+  </div>
+  <div class="form-row">
+      <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control champ" name="mdp" id="mdp" placeholder="Password" aria-describedby="inputGroupPrepend3" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Confirmer mot de passe</label>
+      <input type="password" class="form-control champ" id="confirmdp" placeholder="mot de passe" aria-describedby="inputGroupPrepend3" required>
+    </div>
+    
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control champ" name="adresse" id="adresse" placeholder="Rue" aria-describedby="inputGroupPrepend3" required>
+  </div>
+  <div class="form-group">
+   
+  <button type="submit" class="btn btn-primary" name="envoyer" id="envoyer">Inscrire</button>
+  <button id="annuler" class="btn btn-primary">Annuler</button
+  </div>
+</form>
+    
 </table>
 </section>

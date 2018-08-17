@@ -7,6 +7,7 @@ class EscapeBD extends Escape {
         $this->_db = $db;
     }
     public function getTexteEscape() {
+        
         try {
             $query = "select * from escape";
             $resultset = $this->_db->prepare($query);
@@ -26,19 +27,26 @@ class EscapeBD extends Escape {
     }
     public function getIdEscape($nomEscape){
         try {
-            $query = "select idescape from escape where nomescape='"+$nomEscape+"'";//:nomescape";
-            $resultset = $this->_db->execute($query);
-            var_dump($nomEscape);
-            //$resultset->bindValue(':nomescape', $nomEscape,PDO::PARAM_STR);
-           // $resultset->execute();
-            $id = $resultset;//->fetch();
+            $query = "select * from escape where nomescape= :nomescape";//:nomescape";
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':nomescape', $nomEscape,PDO::PARAM_STR);
+            $resultset->execute();
+            $data = $resultset->fetchAll();
+            $resultset->execute();
         } catch (PDOException $e) {
             print $e->getMessage();
         }
-        if (!empty($id)) {
-            return $id;
-        } else {
-            return null;
+        while ($data = $resultset->fetch()) {
+            try {
+                $_infoArray[] = $data;
+            } catch (PDOException $e) {
+                print $e->getMessage();
+            }
         }
+        return $_infoArray;
     }
+    
+    
+    
+    
 }

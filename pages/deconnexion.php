@@ -1,9 +1,5 @@
 
 <?php
 session_destroy();
-if(!isset($_SESSION['client'])){ 
-    ?>
-    <a href="./index.php?page=accueil"><button type="button" class="btn btn-outline-info bouton">Deconnexion</button></a>
-   <?php
-}
+print "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=accueil\">";
 ?>

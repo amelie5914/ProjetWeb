@@ -1,9 +1,9 @@
 //pour attendre que tous les objets soient chargés
-$(document).ready(function(){
+//$(document).ready(function(){
     
     //afficher image correspondant au choix du jouet
     //choix_jouet = id de la liste déroulante select
-    $('#choix_jouet').click(function(){
+   /* $('#choix_jouet').click(function(){
         $('#showImage').css({
             'margin-top' : '1em',
             'border' : 'solid #DD0000 1px',
@@ -111,7 +111,83 @@ $(document).ready(function(){
         var url ='index.php?'+attribut+'='+val+'&submit_choix=Voir';
         //alert(url);
         window.location.href = url;        
-    });
+    });*/
     
+    
+    
+     
+
+
+$(document).ready(function(){
+    
+    var $nom = $('#nom'),
+        $prenom = $('#prenom'),
+        $mdp = $('#mdp'),
+        $confirmation = $('#confirmdp'),
+        $email = $('#email'),
+        $envoi = $('#envoyer'),
+        $reset = $('#annuler'),
+        $champ = $('.champ');
+
+    $champ.keyup(function(){
+        if($(this).val().length < 5){ // si la chaîne de caractères est inférieure à 5
+            $(this).css({ // on rend le champ rouge
+                borderColor : 'red',
+	        color : 'red'
+            });
+         }
+         else{
+             $(this).css({ // si tout est bon, on le rend vert
+	         borderColor : 'green',
+	         color : 'green'
+	     });
+         }
+    });
+
+    $confirmation.keyup(function(){
+        if($(this).val() != $mdp.val()){ // si la confirmation est différente du mot de passe
+            $(this).css({ // on rend le champ rouge
+     	        borderColor : 'red',
+        	color : 'red'
+            });
+        }
+        else{
+	    $(this).css({ // si tout est bon, on le rend vert
+	        borderColor : 'green',
+	        color : 'green'
+	    });
+        }
+    });
+
+    $envoi.click(function(e){
+       
+    });
+
+   /* $reset.click(function(){
+        $champ.css({ // on remet le style des champs comme on l'avait défini dans le style CSS
+            borderColor : '#ccc',
+    	    color : '#555'
+        });
+        $erreur.css('display', 'none'); // on prend soin de cacher le message d'erreur
+    });*/
+
+    function verifier(champ){
+        if(champ.val() == ""){ // si le champ est vide
+    	    $erreur.css('display', 'block'); // on affiche le message d'erreur
+            champ.css({ // on rend le champ rouge
+    	        borderColor : 'red',
+    	        color : 'red'
+    	    });
+            return true;
+        }
+    }
+$('#annuler').click(efface_formulaire);
+function efface_formulaire () {
+  $(':input')
+   .not(':button, :submit, :reset, :hidden')
+   .val('')
+   .prop('checked', false)
+   .prop('selected', false);
+}
 });
 

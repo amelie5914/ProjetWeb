@@ -2,13 +2,13 @@
 	$esc = new EscapeBD($cnx);
 $tabEsc = $esc->getTexteEscape();
 $nbr = count($tabEsc);
-
 if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
     $escape=$esc->getIdEscape($_GET['nomEscape']);
-    var_dump($_GET['nomEscape']);
-    $reservation=new ReservationBD($cnx);
-    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape,"date"=>$_GET['date'],"commentaire"=>$_GET['commentaire'],"nbrePersonne"=>$_GET['nbrePersonne']));
+    $tarif=$esc->getIdEscape($_GET['nomEscape']);
     
+    $reservation=new ReservationBD($cnx);
+    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape[0]['nomescape'],"date"=>$_GET['date'],"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$escape[0]['tarif']));
+    var_dump($reservation);
 }
 ?>
 		<section>
