@@ -5,9 +5,8 @@ $nbr = count($tabEsc);
 if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
     $escape=$esc->getIdEscape($_GET['nomEscape']);
     $tarif=$esc->getIdEscape($_GET['nomEscape']);
-    
     $reservation=new ReservationBD($cnx);
-    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape[0]['nomescape'],"date"=>$_GET['date'],"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$escape[0]['tarif']));
+    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape[0]['idescape'],"date"=>$_GET['date'],"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$escape[0]['tarif']));
     var_dump($reservation);
 }
 ?>
@@ -36,6 +35,10 @@ if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
                                         <tr>
 						<td><label for="id_date">Date :</label></td>
 						<td><input type="date" id="id_date" name="date" aria-describedby="inputGroupPrepend3" required /></td>
+					</tr>
+                                        <tr>
+						<td><label for="id_date">Heure :</label></td>
+						<td><input type="heure" id="id_heure" name="heure" aria-describedby="inputGroupPrepend3" required /></td>
 					</tr>
                                         <tr>
 						<td><label for="id_commentaire">Commentaire :</label></td>
