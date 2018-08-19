@@ -47,7 +47,7 @@ class ClientBD extends Client {
     }
     public function connect($email,$mdp){
         try {
-            $query = "select * from client where email=:email and mdp=:mdp";;
+            $query = "select * from client where email=:email and mdp=:mdp";
             $resultset = $this->_db->prepare($query);
             $resultset->bindValue(':email', $email);
             $resultset->bindValue(':mdp', $mdp);

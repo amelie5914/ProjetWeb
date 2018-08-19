@@ -32,18 +32,19 @@ class EscapeBD extends Escape {
             $resultset->bindValue(':nomescape', $nomEscape,PDO::PARAM_STR);
             $resultset->execute();
             $data = $resultset->fetchAll();
-            $resultset->execute();
+           $resultset->execute();
+            while ($data = $resultset->fetch()) {
+                $_array[] = $data;
+            }
         } catch (PDOException $e) {
             print $e->getMessage();
+         }
+        if (!empty($_array)) {
+            return $_array;
+        } else {
+            return null;
         }
-        while ($data = $resultset->fetch()) {
-            try {
-                $_infoArray[] = $data;
-            } catch (PDOException $e) {
-                print $e->getMessage();
-            }
-        }
-        return $_infoArray;
+        
     }
     
     

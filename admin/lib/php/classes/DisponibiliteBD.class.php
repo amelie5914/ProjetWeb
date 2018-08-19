@@ -47,7 +47,7 @@ class DisponibiliteBD extends Disponibilite {
     
     public function dispoEscapeDate($idescape) {
         try {
-            $query = "select * from disponibilite where idescape=:idescape  and idreservation is null";
+            $query = "select distinct(date) d,iddate from disponibilite where idescape=:idescape  and idreservation is null";
             $resultset = $this->_db->prepare($query);
             $resultset->bindValue(':idescape', $idescape);
             $resultset->execute();
@@ -64,12 +64,29 @@ class DisponibiliteBD extends Disponibilite {
         }
         
     }
-     public function dispoEscapeDateHeure($idescape,$date) {
+     public function dispoEscapeDateHeure($iddate) {
         try {
-            $query = "select * from disponibilite where idescape=:idescape and date=:date and idreservation is null";
+            $query = "select * from disponibilite where iddate=:iddate and idreservation is null";
             $resultset = $this->_db->prepare($query);
-            $resultset->bindValue(':idescape', $idescape);
-            $resultset->bindValue(':date', $date);
+            $resultset->bindValue(':iddate', $iddate);
+            $resultset->execute();
+            while ($data = $resultset->fetch()) {
+                $_array[] = $data;
+            }
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+        if (!empty($_array)) {
+            return $_array;
+        } else {
+            return null;
+        }
+        
+    }
+    public function nbreDispo() {
+        try {
+            $query = "select count(*) nbre from disponibilite where idreservation is null";
+            $resultset = $this->_db->prepare($query);
             $resultset->execute();
             while ($data = $resultset->fetch()) {
                 $_array[] = $data;

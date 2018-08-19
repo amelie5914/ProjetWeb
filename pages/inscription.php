@@ -43,8 +43,8 @@ if(isset($_GET['envoyer'])){
   </div>
   <div class="form-group">
    
-  <button type="submit" class="btn btn-outline-info " name="envoyer" id="envoyer" data-toggle="modal" data-target="#modalInscription">Inscrire</button>
-  <button id="annuler" class="btn btn-outline-info ">Annuler</button
+  <button type="submit" class="btn btn-outline-info boutonReservation" name="envoyer" id="envoyer" data-toggle="modal" data-target="#modalInscription">Inscrire</button>
+  <button id="annuler" class="btn btn-outline-info boutonReservation ">Annuler</button
   </div>
 </form>
     
