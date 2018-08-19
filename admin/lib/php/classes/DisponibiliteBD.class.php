@@ -101,5 +101,20 @@ class DisponibiliteBD extends Disponibilite {
         }
         
     }
+    public function updateDispo($idreservation,$idescape,$iddate,$heure){
+        var_dump($idreservation,$idescape,$iddate,$heure);
+        try{
+            $query="update disponibilite set idreservation=:idreservation where idescape=:idescape and iddate=:iddate and heure=:heure";
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':idreservation', $idreservation);
+            $resultset->bindValue(':idescape', $idescape);
+            $resultset->bindValue(':iddate', $iddate);
+            $resultset->bindValue(':heure', $heure);
+            $resultset->execute();
+        } catch (PDOException $e) {
+            print "<br/>Echec de l'insertion";
+         }
+    }
+    
 }
 ?>

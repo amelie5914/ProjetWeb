@@ -24,6 +24,23 @@ class ReservationBD extends Reservation {
         }
         
     }
+    public function getIdReservation(){
+         try {
+            $query = "select max(idreservation) m from reservation";
+            $resultset = $this->_db->prepare($query);
+            $resultset->execute();
+            while ($data = $resultset->fetch()) {
+                $_array[] = $data;
+            }
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+        if (!empty($_array)) {
+            return $_array;
+        } else {
+            return null;
+        }
+    }
      public function ajoutReservation(array $data) {
         try {
             $prix=$data['tarif']*$data['nbrepersonne'];
@@ -31,13 +48,7 @@ class ReservationBD extends Reservation {
             $query = "insert into reservation (idcli,idescape,date,commentaire,nbrepersonne,prix,heure) values (:idcli,:idescape,to_date(substring(:date from 1 for 8),'YYYYMMDD'),:commentaire,:nbrepersonne,:prix,:heure)";
             //var_dump($query);
             $resultset = $this->_db->prepare($query);
-            var_dump($data['idcli']);
-            var_dump($data['idescape']);
-            var_dump($data['date']);
-            var_dump($data['commentaire']);
-            var_dump($data['nbrepersonne']);
-            var_dump($prix);
-            var_dump($data['heure']);
+            
             $resultset->bindValue(':idcli', $data['idcli']);
             $resultset->bindValue(':idescape', $data['idescape']);
             $resultset->bindValue(':date', $data['date']);

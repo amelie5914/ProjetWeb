@@ -3,12 +3,14 @@ $esc = new EscapeBD($cnx);
 $tabEsc = $esc->getTexteEscape();
 $nbr=count($tabEsc);
 $dispo=new DisponibiliteBD($cnx);
+$dispo1=new DisponibiliteBD($cnx);
 if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
     $escape=$_GET['escape']+1;
     $tarif=$esc->getIdEscape($escape);
     $reservation=new ReservationBD($cnx);
     $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape,"heure"=>$_GET['heure'],"date"=>$_GET['datum'],"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$escape[0]['tarif']));
-    var_dump($reservation);
+    $idres=$reservation->getIdReservation();
+    $dispo1->updateDispo($idres[0]['m'], $escape, $_GET['datum'],$_GET['heure']);
 }
 ?>
 <h1 class="centrer">Remplissez ce formulaire pour faire une reservation.</h1>

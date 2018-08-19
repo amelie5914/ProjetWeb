@@ -9,7 +9,7 @@ class EscapeBD extends Escape {
     public function getTexteEscape() {
         
         try {
-            $query = "select * from escape";
+            $query = "select * from escape order by idescape asc";
             $resultset = $this->_db->prepare($query);
             $resultset->execute();
             while ($data = $resultset->fetch()) {
