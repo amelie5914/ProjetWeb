@@ -34,7 +34,11 @@ class ClientBD extends Client {
             $resultset->bindValue(':adresse', $data['adresse']);
             $resultset->bindValue(':mdp', $data['mdp']);
             $resultset->bindValue(':email', $data['email']);
-            $resultset->execute();
+            $i=$resultset->execute();
+            if(!$i){
+                var_dump('not done');
+            }
+            return $i;
             //$retour = $resultset->fetchColumn(0);
             //return $retour;
         } catch (PDOException $e) {

@@ -1,7 +1,11 @@
 <?php
 	$esc = new EscapeBD($cnx);
+        $dispo=new DisponibiliteBD($cnx);
 $tabEsc = $esc->getTexteEscape();
 $nbr = count($tabEsc);
+if(isset($_GET['nomEscape'])){
+$escape=$esc->getIdEscape($_GET['nomEscape']);
+}
 if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
     $escape=$esc->getIdEscape($_GET['nomEscape']);
     $tarif=$esc->getIdEscape($_GET['nomEscape']);
@@ -18,7 +22,7 @@ if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
 					<tr>
 					<td><label for="nomEscape">Escape room :</label></td>
 						<td>
-							<select name="nomEscape" size="1">
+							<select name="nomEscape" size="1" id="nomEscape">
 							<?php
 							for($i=0;$i<$nbr;$i++){
 								echo "<option value=".str_replace(' ','_',$tabEsc[$i]['nomescape']).">".$tabEsc[$i]['nomescape']." </option>";
@@ -34,12 +38,19 @@ if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
 					</tr>
                                         <tr>
 						<td><label for="id_date">Date :</label></td>
-						<td><input type="date" id="id_date" name="date" aria-describedby="inputGroupPrepend3" required /></td>
-					</tr>
-                                        <tr>
-						<td><label for="id_date">Heure :</label></td>
-						<td><input type="heure" id="id_heure" name="heure" aria-describedby="inputGroupPrepend3" required /></td>
-					</tr>
+                                                <td><input type="date" id="id_date" name="date" aria-describedby="inputGroupPrepend3" required /></td>
+                                                </tr>
+                                        <tr><td><label for="heure">Heure :</label></td> 
+                                            <td>
+                                                        <select name="heure" size="1" class="d-none" >
+                                                           <?php 
+                                                           for($i=0;$i<$nbr;$i++){
+                                                               echo "<option value=".data[$i].heure.">".data[$i].heure."</option>";
+                                                                   
+                                                           }?>
+							</select>
+                                            </td>
+                                            </tr>        
                                         <tr>
 						<td><label for="id_commentaire">Commentaire :</label></td>
                                                 <td><textarea rows="3" id="id_commentaire" name="commentaire" placeholder="Quelque chose à dire en plus?"></textarea></td>

@@ -24,7 +24,7 @@
     <a class="dropdown-item" href="./index.php?page=caverneDragon">La caverne du dragon</a>
   </div>
     
-    <a class=" style_bouton  btn-lg" href="./index.php?page=reservation" aria-haspopup="true" aria-expanded="false">
+    <a class=" style_bouton  btn-lg" href="./index.php?page=reservationBis" aria-haspopup="true" aria-expanded="false">
     Reservation
   </a>
     <a class=" style_bouton btn-lg" href="./index.php?page=contact" aria-haspopup="true" aria-expanded="false" > Contact </a>

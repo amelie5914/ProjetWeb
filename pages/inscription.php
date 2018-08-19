@@ -1,10 +1,11 @@
 <?php
+$i=true;
 if(isset($_GET['envoyer'])){
     extract($_GET, EXTR_OVERWRITE);
 
     $cli = new ClientBD($cnx);
-    $cli->ajoutClient($_GET/*array ("nom"=>$_GET["nom"],"prenom"=>$_GET['prenom'],"adresse"=>$_GET['adresse'],"mdp"=>$_GET['mdp'],"email"=>$_GET['email'])*/);
-    
+    $i=$cli->ajoutClient($_GET/*array ("nom"=>$_GET["nom"],"prenom"=>$_GET['prenom'],"adresse"=>$_GET['adresse'],"mdp"=>$_GET['mdp'],"email"=>$_GET['email'])*/);
+
 }
 ?>
 <section>
@@ -38,7 +39,7 @@ if(isset($_GET['envoyer'])){
   </div>
   <div class="form-group">
     <label for="inputAddress">Address</label>
-    <input type="text" class="form-control champ" name="adresse" id="adresse" placeholder="Rue" aria-describedby="inputGroupPrepend3" required>
+    <input type="text" class="form-control " name="adresse" id="adresse" placeholder="Rue" aria-describedby="inputGroupPrepend3" required>
   </div>
   <div class="form-group">
    
@@ -48,31 +49,21 @@ if(isset($_GET['envoyer'])){
 </form>
     
 </table>
-</section>
-
-   
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Open modal for @getbootstrap</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <?php
+        if(!$i){
+            var_dump(!$i);
+?>
+<div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Erreur d'inscription!</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form>
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Recipient:</label>
-            <input type="text" class="form-control" id="recipient-name">
-          </div>
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text"></textarea>
-          </div>
-        </form>
+          <p> Cet email est déjà utilisé par un autre utilisateur...</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -81,26 +72,38 @@ if(isset($_GET['envoyer'])){
     </div>
   </div>
 </div>
+    <?php
+    
+    }
+    else{
+    ?>
 
-<table>
-              <tr>
-                  <td>Nom: </td>
-                  <td><?php$_GET["nom"]?></td>
-              </tr>
-              <tr>
-                  <td>Prenom: </td>
-                  <td><?php$_GET["prenom"]?></td>
-              </tr>
-              <tr>
-                  <td>Email: </td>
-                  <td><?php$_GET["email"]?></td>
-              </tr>
-              <tr>
-                  <td>Mot de passe: </td>
-                  <td><?php$_GET["mdp"]?></td>
-              </tr>
-              <tr>
-                  <td>Adresse: </td>
-                  <td><?php$_GET["adresse"]?></td>
-              </tr>
-          </table>
+<div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Vous êtes correctement inscrits</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p> Vous êtes inscrits  </p>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <?php } ?>
+</section>
+<?php
+if(isset($_GET['envoyer'])){
+print "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=connexion\">";
+}
+?>
+
+   
+
