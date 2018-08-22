@@ -101,8 +101,12 @@ class DisponibiliteBD extends Disponibilite {
         }
         
     }
-    public function updateDispo($idreservation,$idescape,$iddate,$heure){
-        var_dump($idreservation,$idescape,$iddate,$heure);
+    
+    public function updateDispo($idreservation,$idescape,$date,$heure){
+        $format='%d';
+        
+         $iddate=$date;
+         var_dump($idreservation,$idescape,$iddate,$heure);
         try{
             $query="update disponibilite set idreservation=:idreservation where idescape=:idescape and iddate=:iddate and heure=:heure";
             $resultset = $this->_db->prepare($query);
@@ -111,6 +115,27 @@ class DisponibiliteBD extends Disponibilite {
             $resultset->bindValue(':iddate', $iddate);
             $resultset->bindValue(':heure', $heure);
             $resultset->execute();
+        } catch (PDOException $e) {
+            print "<br/>Echec de l'insertion";
+         }
+    }
+     public function ajoutDispo(array $data) {
+        try {
+            $iddate=$data['date']. strval($data['idescape']);
+            $query = "insert into disponibilite (idescape,date,heure,iddate) values (:idescape,:date,:heure,:iddate)";
+            //var_dump($query);
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':idescape', $data['idescape']);
+            $resultset->bindValue(':date', $data['date']);
+            $resultset->bindValue(':heure', $data['heure']);
+            $resultset->bindValue(':iddate', $iddate);
+            $i=$resultset->execute();
+            if(!$i){
+                var_dump('not done');
+            }
+            return $i;
+            //$retour = $resultset->fetchColumn(0);
+            //return $retour;
         } catch (PDOException $e) {
             print "<br/>Echec de l'insertion";
          }

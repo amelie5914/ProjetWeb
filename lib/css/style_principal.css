@@ -35,7 +35,11 @@
     color:white;
     border-radius:18px;
 }
-
+.boutonAdmin{
+    position:fixed;
+    top:11px;
+    left:43px;
+}
 #titre_page {
     font-weight:bold;
     color: #DA1C5A;
@@ -128,7 +132,7 @@ span{
 .menu{
     position:fixed;
     top:-18px;
-    left:300px;
+    left:200px;
     
 }
 .bouton{
@@ -144,10 +148,7 @@ label{
         color:#C2CFE9;
         
 }
-table{
-    
-    margin-left:600px;
-}
+
 .boutonReservation{
 	margin-bottom:15px;
 	font-size:27px;
@@ -171,6 +172,16 @@ table{
         color:#C2CFE9;
         margin-left:-20px;
         margin-top:-10px;
+}
+#croix{
+    width:15px;
+    height:15px;
+}
+tr{
+    margin:4px;
+}
+table{
+    font-size:15px;
 }
 /**************MODAL***************/
 

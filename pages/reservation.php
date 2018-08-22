@@ -7,8 +7,10 @@ $dispo1=new DisponibiliteBD($cnx);
 if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
     $escape=$_GET['escape']+1;
     $tarif=$esc->getIdEscape($escape);
+    
     $reservation=new ReservationBD($cnx);
-    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape,"heure"=>$_GET['heure'],"date"=>$_GET['datum'],"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$escape[0]['tarif']));
+    $reservation->ajoutReservation(array("idcli"=>$_SESSION['client'],"idescape"=>$escape,"heure"=>$_GET['heure'],"date"=>substr($_GET['datum'],0,-1),"commentaire"=>$_GET['commentaire'],"nbrepersonne"=>$_GET['nbrePersonne'],"tarif"=>$tarif));
+  
     $idres=$reservation->getIdReservation();
     $dispo1->updateDispo($idres[0]['m'], $escape, $_GET['datum'],$_GET['heure']);
 }

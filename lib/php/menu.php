@@ -33,6 +33,18 @@
         ?>
     <a class=" style_bouton btn-lg" href="./index.php?page=deconnexion" aria-haspopup="true" aria-expanded="false" > Deconnexion</a>
     <?php
+        if($_SESSION['client']==1){?>
+           <div class="dropdown ">
+  <button class="btn dropdown-toggle style_bouton btn-lg boutonAdmin" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Admin
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="./index.php?page=disponibilite">Disponibilite</a>
+    <a class="dropdown-item" href="./index.php?page=admin_reservation">Reservation</a>
+  </div>
+</div>
+    <?php
+        }
     }
     else{
         ?>

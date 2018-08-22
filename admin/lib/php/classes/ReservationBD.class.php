@@ -45,8 +45,8 @@ class ReservationBD extends Reservation {
         try {
             $prix=$data['tarif']*$data['nbrepersonne'];
             //var_dump($prix);
-            $query = "insert into reservation (idcli,idescape,date,commentaire,nbrepersonne,prix,heure) values (:idcli,:idescape,to_date(substring(:date from 1 for 8),'YYYYMMDD'),:commentaire,:nbrepersonne,:prix,:heure)";
-            //var_dump($query);
+            $query = "insert into reservation (idcli,idescape,date,commentaire,nbrepersonne,prix,heure) values (:idcli,:idescape,to_date(:date,'YYYY-MM-DD'),:commentaire,:nbrepersonne,:prix,:heure)";
+            var_dump($data['date']);
             $resultset = $this->_db->prepare($query);
             
             $resultset->bindValue(':idcli', $data['idcli']);
@@ -57,6 +57,24 @@ class ReservationBD extends Reservation {
             $resultset->bindValue(':prix', $prix);
             $resultset->bindValue(':heure', $data['heure']);
             $resultset->execute();
+        } catch (PDOException $e) {
+            print "<br/>Echec de l'insertion";
+            print $e->getMessage();
+        }
+    }
+    public function supprimerReservation($idreservation){
+        try {
+            //var_dump($prix);
+            $query = "delete from reservation where idreservation=:idreservation";
+            //var_dump($query);
+            $resultset = $this->_db->prepare($query);
+            
+            $resultset->bindValue(':idreservation', $idreservation);
+            $i=$resultset->execute();
+            if(!$i){
+                var_dump('not done');
+            }
+            return $i;
         } catch (PDOException $e) {
             print "<br/>Echec de l'insertion";
             print $e->getMessage();
