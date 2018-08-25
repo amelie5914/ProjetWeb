@@ -1,5 +1,5 @@
 <?php
-	
+$i=0;
 if(isset($_GET["connexion"])){
     $cli = new ClientBD($cnx);
     $client=$cli->connect($_GET["email"],$_GET["mdp"]);
@@ -10,7 +10,6 @@ if(isset($_GET["connexion"])){
     else{
         $_SESSION['client']=$client[0]->idcli;
         $i=0;?>
-        <meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=accueil\">
         <?php
     }
     
@@ -34,7 +33,7 @@ if(isset($_GET["connexion"])){
   </div>
        <div class="form-group row">
         <div class="col-sm-4 offset-md-4">
-          <button type="submit" class="btn btn-primary boutonReservation " name="connexion" id="id_submit">Connexion</button>
+          <button type="submit" class="btn btn-primary boutonReservation " name="connexion" id="id_submit" data-toggle="modal" data-target="#modalConnexion">Connexion</button>
           <a class="dropdown-item inscription" href="index.php?page=inscription">Tu es nouveau? Inscris toi!</a>
         </div>
      </div>
@@ -42,5 +41,61 @@ if(isset($_GET["connexion"])){
    </form>
 </table>
 </section>
+            <?php
+             var_dump($i);
+        if($i===0){
+            var_dump(!$i);
+?>
+<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Erreur de connexion!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p> Cet email ou ce mot de passe n'est pas correct</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <?php
+    
+    }
+    else{
+    ?>
+
+<div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Connexion</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <p> Vous êtes connectés! </p>
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <?php } ?>
+</section>
+<?php
+if(isset($_GET['envoyer'])){
+print "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=accueil\">";
+}
+?>
        
  

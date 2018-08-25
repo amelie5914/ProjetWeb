@@ -13,9 +13,11 @@ if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
   
     $idres=$reservation->getIdReservation();
     $dispo1->updateDispo($idres[0]['m'], $escape, $_GET['datum'],$_GET['heure']);
+    echo "<meta http-equiv=\"refresh\": Content=\"0;URL=./pages/imprimerReservation.php\">";
 }
 ?>
 <h1 class="centrer">Remplissez ce formulaire pour faire une reservation.</h1>
+<a href="./pages/imprimerReservation.php">Imprimer</a>
 <form method="GET">
     <div class="form-row ">
         <div class="col-sm-2 offset-md-4">

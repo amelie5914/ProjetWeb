@@ -48,7 +48,7 @@ class EscapeBD extends Escape {
     }
     public function getNomEscape($idEscape){
         try {
-            $query = "select nomescape from escape where idescape= :idescape";//:nomescape";
+            $query = "select * from escape where idescape= :idescape";//:nomescape";
             $resultset = $this->_db->prepare($query);
             $resultset->bindValue(':idescape', $idEscape);
             $resultset->execute();

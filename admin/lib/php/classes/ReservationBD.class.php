@@ -6,6 +6,24 @@ class ReservationBD extends Reservation {
     public function __construct($db) {
         $this->_db = $db;
     }
+    public function getInfoReservation($idreservation){
+        try {
+            $query = "select * from reservation where idreservation=:idreservation";
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':idreservation', $idreservation);
+            $resultset->execute();
+            while ($data = $resultset->fetch()) {
+                $_array[] = $data;
+            }
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+        if (!empty($_array)) {
+            return $_array;
+        } else {
+            return null;
+        }
+    }
     public function getReservation() {
         try {
             $query = "select * from reservation";

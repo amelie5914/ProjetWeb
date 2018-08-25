@@ -24,6 +24,25 @@ class ClientBD extends Client {
         }
         
     }
+    public function getInfoClient($idcli) {
+        try {
+            $query = "select * from client where idcli=:idcli";
+            $resultset = $this->_db->prepare($query);
+            $resultset->bindValue(':idcli', $idcli);
+            $resultset->execute();
+            while ($data = $resultset->fetch()) {
+                $_array[] = $data;
+            }
+        } catch (PDOException $e) {
+            print $e->getMessage();
+        }
+        if (!empty($_array)) {
+            return $_array;
+        } else {
+            return null;
+        }
+        
+    }
      public function ajoutClient(array $data) {
         try {
             $query = "insert into client (nom,prenom,adresse,mdp,email) values (:nom,:prenom,:adresse,:mdp,:email)";
