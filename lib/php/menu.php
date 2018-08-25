@@ -24,13 +24,14 @@
     <a class="dropdown-item" href="./index.php?page=caverneDragon">La caverne du dragon</a>
   </div>
     
-    <a class=" style_bouton  btn-lg" href="./index.php?page=reservation" aria-haspopup="true" aria-expanded="false">
-    Reservation
-  </a>
+   
     <a class=" style_bouton btn-lg" href="./index.php?page=contact" aria-haspopup="true" aria-expanded="false" > Contact </a>
     <?php
     if(isset($_SESSION['client'])){ 
         ?>
+     <a class=" style_bouton  btn-lg" href="./index.php?page=reservation" aria-haspopup="true" aria-expanded="false">
+    Reservation
+  </a>
     <a class=" style_bouton btn-lg" href="./index.php?page=deconnexion" aria-haspopup="true" aria-expanded="false" > Deconnexion</a>
     <?php
         if($_SESSION['client']==1){?>

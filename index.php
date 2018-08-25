@@ -30,7 +30,7 @@ session_start();
     <body class="fond img-fluid">
         <div>
            
-            <img src="admin/images/accueil.jpg" class="img-responsive banniere" style="width:100%;" alt="banniere">
+            <img src="admin/images/accueil.jpg" class="img-responsive banniere"  alt="banniere">
             <?php
                 if(file_exists('lib/php/menu.php')){
                     include ('lib/php/menu.php');

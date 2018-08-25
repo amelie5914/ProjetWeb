@@ -9,11 +9,10 @@ if(isset($_GET["supprimer"])){
         if(isset($_GET[$i])){
         $d->updateDispo(null,$tabRes[($i)]['idescape'],$tabRes[($i)]['date'].strval($tabRes[($i)]['idescape']),$tabRes[($i)]['heure']);
         $r->supprimerReservation($tabRes[($i)]['idreservation']);
-        var_dump($tabRes[($i)]['idreservation']);
-        //echo "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=admin_reservation\">";
-        
+       
         }
     }
+    echo "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=admin_reservation\">";
 }
 ?>
 <div class="table-responsive">

@@ -42,9 +42,7 @@ if(isset($_GET["connexion"])){
 </table>
 </section>
             <?php
-             var_dump($i);
         if($i===0){
-            var_dump(!$i);
 ?>
 <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -68,7 +66,7 @@ if(isset($_GET["connexion"])){
     <?php
     
     }
-    else{
+    else if($i===1){
     ?>
 
 <div class="modal fade" id="modalConnexion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -93,7 +91,7 @@ if(isset($_GET["connexion"])){
     <?php } ?>
 </section>
 <?php
-if(isset($_GET['envoyer'])){
+if(isset($_GET['connexion'])){
 print "<meta http-equiv=\"refresh\": Content=\"0;URL=./index.php?page=accueil\">";
 }
 ?>

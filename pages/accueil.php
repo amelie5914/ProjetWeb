@@ -30,8 +30,17 @@ C'est l'occasion d'une plongée dans les arcanes du temps, à la découverte d'u
   </a>
 </div>
 <h1>OBJECTIF:</h1>
-<p class="texte">Votre objectif, vous échapper de la pièce dans laquelle vous êtes enfermé, en moins 1h. Pour cela vous devrez résoudre des énigmes
-    et des codes qui vous permettront d’ouvrir la porte et de vous échappez. Ces pièces sont faites pour des groupes allant de 2 à 5 personnes</p>
-</br></br>
-<p class="texte">Vous vous retrouvez dans une pièce seul petit problème la porte est fermée... Le seul moyen de l’ouvrir c’est de fouiller la pièce à la recherche d’énigmes
-    et de codes qui vous ouvrirons la porte. Ah oui et j’oubliais vous avez une heure pour ouvrir cette porte</p>
+<table>
+    <tr>
+        <td><img  src="admin/images/sablier.png"  style="width:100%"> </td>
+        <td><img  src="admin/images/cadenas.png"  style="width:100%"> </td>
+        <td><img  src="admin/images/cles.png"  style="width:100%"> </td>
+        <td><img  src="admin/images/carte.png"  style="width:100%"> </td>
+    </tr>
+    <tr>
+        <td><p>60 minutes</p></td>
+        <td><p>Deverrouiller des cadenas pour pouvoir sortir.</p></td>
+        <td><p>Trouver des clés ou des mots de passe</p> </td>
+        <td><p>Résoudre des énigmes</p></td>
+    </tr>
+</table>
