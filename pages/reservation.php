@@ -16,7 +16,6 @@ if(isset($_GET["envoyer"])&&isset($_SESSION["client"])){
 }
 ?>
 <h1 class="centrer">Remplissez ce formulaire pour faire une reservation.</h1>
-<a href="./pages/imprimerReservation.php">Imprimer</a>
 <form method="GET">
     <div class="form-row ">
         <div class="col-sm-2 offset-md-4">

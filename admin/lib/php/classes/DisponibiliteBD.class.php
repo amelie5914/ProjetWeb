@@ -106,7 +106,6 @@ class DisponibiliteBD extends Disponibilite {
         $format='%d';
         
          $iddate=$date;
-         var_dump($idreservation,$idescape,$iddate,$heure);
         try{
             $query="update disponibilite set idreservation=:idreservation where idescape=:idescape and iddate=:iddate and heure=:heure";
             $resultset = $this->_db->prepare($query);

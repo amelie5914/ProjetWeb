@@ -5,12 +5,12 @@ if(isset($_GET['envoyer'])){
 
     $cli = new ClientBD($cnx);
     $i=$cli->ajoutClient($_GET/*array ("nom"=>$_GET["nom"],"prenom"=>$_GET['prenom'],"adresse"=>$_GET['adresse'],"mdp"=>$_GET['mdp'],"email"=>$_GET['email'])*/);
-
+    var_dump($i);
 }
 ?>
 <section>
     <h1 class="centrer">Inscrivez-vous!</h1>
-<table class="formulaire">
+<table  class="formulaire">
     <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="GET">
         <div class="form-row">
     <div class="form-group col-md-6">
@@ -28,8 +28,8 @@ if(isset($_GET['envoyer'])){
   </div>
   <div class="form-row">
       <div class="form-group col-md-6">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control champ" name="mdp" id="mdp" placeholder="Password" aria-describedby="inputGroupPrepend3" required>
+      <label for="inputPassword4">Mot de passe</label>
+      <input type="password" class="form-control champ" name="mdp" id="mdp" placeholder="Mot de passe" aria-describedby="inputGroupPrepend3" required>
     </div>
     <div class="form-group col-md-6">
       <label for="inputEmail4">Confirmer mot de passe</label>
@@ -53,6 +53,7 @@ if(isset($_GET['envoyer'])){
         if(!$i){
             var_dump(!$i);
 ?>
+
 <div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -71,13 +72,12 @@ if(isset($_GET['envoyer'])){
       </div>
     </div>
   </div>
-</div>
+</div>-->
     <?php
     
     }
     else{
     ?>
-
 <div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

@@ -63,7 +63,7 @@ class ReservationBD extends Reservation {
         try {
             $prix=$data['tarif']*$data['nbrepersonne'];
             $query = "insert into reservation (idcli,idescape,date,commentaire,nbrepersonne,prix,heure) values (:idcli,:idescape,to_date(:date,'YYYY-MM-DD'),:commentaire,:nbrepersonne,:prix,:heure)";
-            var_dump($data['date']);
+            
             $resultset = $this->_db->prepare($query);
             
             $resultset->bindValue(':idcli', $data['idcli']);
