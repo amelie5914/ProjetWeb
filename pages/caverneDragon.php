@@ -10,5 +10,8 @@ $nbr = count($tabEsc);
  <?php
                 print  "<p style='margin-top:40px' >"."<span>".substr($tabEsc[0]['description'],0,1)."</span>".substr($tabEsc[0]['description'],1)."</p>";
                 ?>
+    <?php
+     print "<p>Prix:".$tabEsc[0]['tarif']."</p>";
+    ?>
     <a href="./index.php?page=reservation"><button type="button" class="btn btn-outline-info bouton" href="./index.php?page=reservation">RESERVATION</button>
     </a>
